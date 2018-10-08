@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 
 ]
 
-CKEDITOR_UPLOAD_PATH = 'uploads/'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -126,7 +126,7 @@ USE_L10N = True
 USE_TZ = True
 
 
-print(BASE_DIR)
+
 
 STATIC_ROOT = os.path.join(BASE_DIR, "statics")
 STATIC_URL = '/static/'
