@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'v2z=irga1!7ikyxy76s&x&c5ad5fuewwayoqm2su*2o^vsws9w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.lindomexico.de']
 
 
 # Application definition
@@ -83,8 +83,12 @@ WSGI_APPLICATION = 'proje.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'bloglindy',
+        'USER': 'ilker',
+        'PASSWORD': '2510449',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -134,7 +138,7 @@ STATICFILES_FINDERS = (
 'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
-STATICFILES_DIRS = (BASE_DIR + '/static/',)
+#STATICFILES_DIRS = (BASE_DIR + '/static/',)
 
 
 
