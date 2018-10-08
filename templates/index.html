@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Linda Bader{% endblock %}
+{% block body %}
+
+<header class="masthead" style="background-image: url({% static 'img/mexico.jpeg' %})">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Mein Freiwilligendienst in Mexiko</h1>
+              <span class="subheading">Private Blog</span>
+            </div>
+          </div>
+        </div>
+      </div>
+</header>
+
+<!-- blog-post -->
+{% if user.is_authenticated %}
+<div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            {% for i in posts %}
+          <div class="post-preview">
+            <a href="{%url 'detail' i.slug%}">
+              <h2 class="post-title">
+               {{i.title}}
+              </h2>
+              <h3 class="post-subtitle">
+                {{i.about}}
+              </h3>
+            </a>
+            <p class="post-meta">Posted by
+              <a href="/about">Linda</a>
+              on {{i.create_date}}</p>
+          </div>
+          <hr>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="container" style=>
+      <div class="row right-page" >
+        <div class="pagination" >
+        <span class="step-links">
+            {% if posts.has_previous %}
+                <a  href="?page=1">&laquo; First Page</a>
+            <span> | </span>
+                <a href="?page={{ posts.previous_page_number }}">Previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+            </span>
+
+
+            {% if posts.has_next %}
+                <a href="?page={{ posts.next_page_number }}">Next Page</a>
+                <span> | </span>
+                <a href="?page={{ posts.paginator.num_pages }}">Last Page &raquo;</a>
+            {% endif %}
+        </span>
+        </div>
+    </div>
+</div>
+    {% else %}
+    <div class="container">
+            <div class="row align-items-center">
+              <div class="col-7 ">
+                  <div class="site-heading">
+                  <h1 color="black">Login to see the posts.</h1>
+                 </div>
+              </div>
+              <div class="col-5 ">
+                  <a href="/login/"><button type="button"  class="mybig-btn  btn-primary">Login</button></a>
+              </div>
+            </div>
+    </div>
+        {% endif %}
+
+
+<!-- /blog-post -->
+
+
+
+
+{% endblock %}

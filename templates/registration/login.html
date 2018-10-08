@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Sign in{% endblock %}
+{% block custom %}<link href="{% static 'custom/css/signin.css' %}" rel="stylesheet">{% endblock %}
+{% block body %}
+{% if user.is_authenticated %}
+<link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <div class="container">
+    <h2 class="form-signin-heading">Please sign in</h2>
+  </div>
+{% else %}
+  <div class="container">
+    <form class="form-signin" method="POST">
+      {% csrf_token %}
+	  <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h2 class="form-signin-heading myh2">Please sign in</h2>
+      <div class="row">
+       <input type="text" id="userName" name="username" class="form-control" placeholder="User Name" required autofocus>
+       <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name = "password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <button class="btn btn-lg btn-primary btn-block mybutton" type="submit">Sign in</button>
+
+    </form>
+    </div>
+{% endif %}
+
+{% endblock %}
